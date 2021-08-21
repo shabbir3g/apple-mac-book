@@ -1,3 +1,4 @@
+// Extra Feature Price Function
 function extraFeaturePrice(price, extraId){
     const extraMemory = document.getElementById('extra-memory');
     const extraStorage = document.getElementById('extra-storage');
@@ -22,6 +23,21 @@ function extraFeaturePrice(price, extraId){
     // Grand Total Price
     const grandTotal = document.getElementById('grand-total');
     grandTotal.innerText = 1299 + currentPrice;
+}
+
+// Promo Code Function
+
+function PromoCodeFunction(){
+
+    const extraMemory = document.getElementById('extra-memory');
+    const extraStorage = document.getElementById('extra-storage');
+    const extraDelivery = document.getElementById('extra-delivery');
+
+    // total price 
+    const currentPrice = parseInt(extraMemory.innerText) + parseInt(extraStorage.innerText) + parseInt(extraDelivery.innerText);
+   
+    return currentPrice;
+   
 }
 
 // Memory 8GB
@@ -64,22 +80,9 @@ document.getElementById('delivery-0usd').addEventListener('click', function(){
 
 // Promo Code
 
-function extraFeaturePriceHandaler(){
-
-    const extraMemory = document.getElementById('extra-memory');
-    const extraStorage = document.getElementById('extra-storage');
-    const extraDelivery = document.getElementById('extra-delivery');
-
-    // total price 
-    const currentPrice = parseInt(extraMemory.innerText) + parseInt(extraStorage.innerText) + parseInt(extraDelivery.innerText);
-   
-    return currentPrice;
-   
-}
-
 document.getElementById('promo-btn').addEventListener('click', function(){
 
-    const currentPrice = extraFeaturePriceHandaler();
+    const currentPrice = PromoCodeFunction();
 
     const grandTotal = document.getElementById('grand-total');
     grandTotal.innerText = 1299 + currentPrice;
@@ -90,7 +93,7 @@ document.getElementById('promo-btn').addEventListener('click', function(){
     const promoInput = document.getElementById('promo-input');
     
     // Promo Code Condition
-    if(promoInput.value == "stevekaku"){
+    if(promoInput.value.toLowerCase() == "stevekaku"){
 
       grandTotal.innerText = priceAfterDiscount;
 
